@@ -1,0 +1,170 @@
+1. (ทดสอบ Loop) จงเขียนโปรแกรมให้ แสดงดังภาพต่อไปนี้ (ใช้ภาษา PHP และวงกลม คือตัวอักษร O )
+1.1  ans
+
+$max = 4;
+for ($i = 0; $i < $max; $i++) {
+    for ($j = 0; $j < $max-$i; $j++) {
+        echo '&nbsp;&nbsp;&nbsp;';
+    }
+    for ($x = 1; $x <= $i +1; $x++) {
+        echo 'O';
+    }
+
+    echo "<br>";
+}
+
+1.2  ans 
+
+$max = 5;
+
+for ($i = 0; $i < $max; $i++) {
+    for ($j = 0; $j < $max * 2; $j++) {
+        if ($i >= $max - $j - 1 && $max - $i <= 2* $max - $j - 1)
+            echo "O";
+        else
+            echo "&nbsp;&nbsp;";
+    }
+    echo "<br>";
+}
+
+2. (ทดสอบความเข้าใจ if, else)
+2.1 ans 10200
+2.2 ans 200
+2.3 ans Average
+
+3. (ทดสอบ foreach)
+3.1 ans  
+15000
+20000
+30000
+3.2.1 ans echo $marks["mohammad"]["physics"];
+3.2.2 ans 
+foreach ($marks as &$value) {
+    foreach ($value as &$valueT) {
+        echo $valueT;
+        echo '&nbsp;';
+    }
+}
+
+4. (ทดสอบ html และ css) เขียน html และ css ดังภาพต่อไปนี้(วางโครงสร้างให้--ดีที่สุด)
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .rectangle {
+            width: 240px;
+            height: 200px;
+            background: red;
+            margin: auto 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: inline-flex">
+        <div class="rectangle"></div>
+        <div class="rectangle"></div>
+        <div class="rectangle"></div>
+    </div>
+</body>
+
+</html>
+
+5 (ทดสอบการออกแบบฐานข้อมูลด้วย ER Diagram และขียน sql)
+5.1 link>> https://dbdocs.io/BLEXZERHUB/ERTest?view=relationships
+5.2 ans 
+insert into branch ( branch_code,branch_name,branch_province,company_code)
+value ('br05','สาขาเชียงใหม่','เชียงใหม่','com01'),
+('br06','สาขาเชียงราย','เชียงราย','com01')
+('br07','สาขาภูเก็ต','ภูเก็ต','com01')
+
+5.3  ans 'ไม่แน่ใจความหมายที่โจทย์ครับ'
+delete from employee where position_code = (select position_code from position where position_name ='sale') << ต้องลบก่อนเนื่องจากมี fk 
+delete from position where position_name ='sale'
+
+5.4 ans
+update branch set branch_name = 'สาขานราธิวาศ' ,  branch_province = 'นราธิวาส'
+where branch_province = 'ปัตตานี'
+
+5.5 ans 
+ select * from employee inner join company on  employee.company_code = company.company_code and company.company_name ='Master-programmer'
+
+5.6 ans 
+select * from employee 
+inner join company 
+    on  employee.company_code = company.company_code 
+    and company.company_name ='Master-programmer'
+inner join branch 
+    on employee.branch_code = branch.branch_code
+    and employee.company_code = branch.company_code 
+    and branch.branch_province in ('ระยอง','กรุงเทพ')
+
+5.7 ans 
+select * from employee 
+inner join company 
+    on  employee.company_code = company.company_code 
+    and company.company_name ='Master-programmer'
+inner join branch 
+    on employee.branch_code = branch.branch_code
+    and employee.company_code = branch.company_code 
+    and branch.branch_province  = 'เลย'
+inner join position
+    on employee.position_code = position.position_code
+    and position.position_name = 'programmer'
+
+5.8 ans 
+
+select  
+employee_code,
+employee_name,
+branch_name,
+position_name
+
+from employee 
+inner join company 
+    on  employee.company_code = company.company_code 
+    and company.company_name ='Master-programmer'
+inner join branch 
+    on employee.branch_code = branch.branch_code
+    and employee.company_code = branch.company_code 
+inner join position
+    on employee.position_code = position.position_code
+
+
+6 ans เป็นคนที่ชอบคิดระบบเพื่อให้คนอื่นทำงานได้ง่ายขึ้นรวมกึงการทีไม่ต้องใช้คนทำงานเลยยิ่งดี จึงคิดว่างานนี้เหมาะสำหรับความฝันของตัวเอง
+ึึ
+7 ans ค้นหาจากแหลางข้อมมูลที่มีอยู่มากมายด้วยตนเองก่อน ถ้าไม่ได้ตริงๆค่อยปรึกษาคนอื่น
+
+8 ans MVC เป็น DesignPattrern ประเภทหนึ่งที่ประกอบไปด้วย 
+    1.Model (M) เป็นส่วนที่รวบรวมข้อมมูลให้เป็น Object สำหรับส่งออกหรือะบันทีกลงในฐานข้อมูล
+    2.View (V) เป็นส่วนที่ใช่แสดงผลกับUser
+    3.Controller(C) เป็นส่วนรับคำสั่งและจัดการข้อมมูลให้ไปแสดงออกหรือไปกระทำกับฐานข้อมูล
+
+9 ans git เป็น version control สำหรับการทำงานเป็นกลุ่ม ที่สามารถวางแผนจัดการ รวมถึงการแยกส่วนการทำงานบนระบบเดียวกัน 
+ให้สามารถลดระยะเวลาในการทำงานของกลุ่มลง โดยที่ทุกคนสามารถทำงานของตนเองไปได้โดยไม่ต้องรอคนอื่น ไม่ต้องกลัวว่าจะชน เพราะสามารถTrackการทำงานได้ 
+
+10 ans Docker เป็น Engine สำหรับรัน service ภานใต้environment ของดครื่องโดยตรง โดนไม่เสียเวลาไปสร้าง os ใหม่เพื่อบรรจุ service นั้นๆ
+
+11.ans Composer เป็นตัวตัดการ Package สำหรับ php เสมือน npm บนNodejs โดยจะมีหน้าที่ ดาวโหลด ตรวจสอบpackage 
+
+12 ans
+
+13 ans ทุกคนเป็นคนเก่งหมด บางคนอาจเก่งในเรื่องเรียน บางตนเก่งในการปฏิบัติ บางคนเก่งกิจกรรม ซึ่งผมมองว่าทุกคนมีึความเก่งเป็นของตัวเอง เพียงแค่เขาหาเจอรึยัง
+
+14. ไม่เคย
+
+15.ans ใช้ Express ของ Nodejs เป็นหลัก เพราะจัดการ ได้ง่ายทำให้สร้าง Env ได้เหมาะสมกับงานนั้นได้เร็ว  
+
+16. ans การวัดค่าความเร็วของการโหลดหน้าpage  ยังไม่เคยใช้
+
+17. ans
+การมีคีย์เวิร์ดในหัวข้อ (Keyword in Title)
+การมีคีย์เวิร์ดในรายละเอียด (Keyword in Description)
+การมีคีย์เวิร์ดอยู่ในเนื้อหา (Keyword in Content)
+การมีคำอธิบายในรูปภาพ (Alt Text in Image)
+การมีคำใกล้เคียงกับคีย์เวิร์ดอยู่ในหน้านั้น (Latent Semantic Indexing in the Page)
